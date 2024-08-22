@@ -29,6 +29,17 @@ pipeline {
                 }
             }
         }
+         stage('Check File Path') {
+            steps {
+                script {
+                    if (fileExists(env.FILE_PATH)) {
+                        echo "File exists at ${env.FILE_PATH}"
+                    } else {
+                        error "File does not exist at ${env.FILE_PATH}"
+                    }
+                }
+            }
+        }
 
        
     } // Close the 'stages' block
