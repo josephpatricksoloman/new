@@ -1,29 +1,30 @@
 pipeline {
     agent any
     tools {
-        nodejs 'jose_nodejs 22'
+        nodejs 'jose_nodejs 22' // Ensure that 'jose_nodejs 22' is correctly configured in Jenkins Global Tool Configuration
     }
-    
 
     stages {
         stage('Hello') {
             steps {
                 echo 'Hello World'
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'joseph_git', url: 'https://github.com/johnpapa/node-hello.git']])
-                echo 'The nodejs pipeline task ended & checked out from the main branch'            
+                echo 'The nodejs pipeline task ended & checked out from the main branch'
             }
         }
 
-        stage('version ') {
+        stage('Version Check') {
             steps {
-                bat 'npm --version'
-                
+                bat 'npm --version' // Ensure this is running on a Windows agent
             }
         }
-         stage('greetings ') {
+
+        stage('Greetings') {
             steps {
-            script { echo 'Hi Joseph this task is a success'
+                script {
+                    echo 'Hi Joseph, this task is a success'
+                }
+            }
         }
     }
-}
 }
