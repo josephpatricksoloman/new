@@ -20,5 +20,9 @@ pipeline {
                 
             }
         }
+         stage('greetings ') {
+            steps {
+            script { echo 'Hi Joseph this task is a success'
+        }
     }
 }
