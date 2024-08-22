@@ -1,1 +1,24 @@
-this is a jenkins file
+pipeline {
+    agent any
+    tools {
+        nodejs 'jose_nodejs 22'
+    }
+    
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'joseph_git', url: 'https://github.com/johnpapa/node-hello.git']])
+                echo 'The nodejs pipeline task ended & checked out from the main branch'            
+            }
+        }
+
+        stage('version ') {
+            steps {
+                bat 'npm --version'
+                
+            }
+        }
+    }
+}
