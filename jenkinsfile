@@ -4,7 +4,7 @@ pipeline {
         nodejs 'jose_nodejs 22' // Ensure that 'jose_nodejs 22' is correctly configured in Jenkins Global Tool Configuration
     }
     environment {
-        FILE_PATH = 'D:\guvi\git guvi' // Replace with your actual file path
+        FILE_PATH = 'D:\\guvi\\git guvi' // Replace with your actual file path, use double backslashes
     }
 
     stages {
@@ -18,7 +18,7 @@ pipeline {
 
         stage('Version Check') {
             steps {
-                bat 'npm --version' // Ensure this is running on a Windows agent. Use 'sh' for Unix-based systems.
+                bat 'npm --version' // This command is correct for a Windows agent
             }
         }
 
@@ -29,7 +29,8 @@ pipeline {
                 }
             }
         }
-         stage('Check File Path') {
+
+        stage('Check File Path') {
             steps {
                 script {
                     if (fileExists(env.FILE_PATH)) {
@@ -40,8 +41,5 @@ pipeline {
                 }
             }
         }
-
-       
-    } // Close the 'stages' block
-
-} // Close the 'pipeline' block
+    }
+}
