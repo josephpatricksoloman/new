@@ -4,7 +4,7 @@ pipeline {
         nodejs 'jose_nodejs 22' // Ensure that 'jose_nodejs 22' is correctly configured in Jenkins Global Tool Configuration
     }
     environment {
-        FILE_PATH = '/home/joseph/input.txt' // Replace with your actual file path
+        FILE_PATH = 'D:\guvi\git guvi' // Replace with your actual file path
     }
 
     stages {
