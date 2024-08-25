@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                checkout scmGit(
+                    branches: [[name: '*/pipeline']], 
+                    extensions: [], 
+                    userRemoteConfigs: [[credentialsId: 'jose_github', url: 'https://github.com/josephpatricksoloman/new.git']]
             }
         }
 
@@ -23,3 +26,7 @@ pipeline {
         }
     }
 }
+
+
+
+
